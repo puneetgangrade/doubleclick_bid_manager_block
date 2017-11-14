@@ -16,6 +16,18 @@ view: click {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
+  dimension: pk {
+    type: string
+    sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
+  }
+
+  #     hidden: true
+
+  measure: count_clicks {
+    type: count_distinct
+    sql: ${pk} ;;
+  }
+
   dimension: ad_id {
     type: string
     sql: ${TABLE}.Ad_ID ;;
@@ -517,8 +529,4 @@ view: click {
     sql: ${TABLE}.ZIP_Postal_Code ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

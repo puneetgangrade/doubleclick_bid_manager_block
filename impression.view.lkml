@@ -437,7 +437,7 @@ view: impression {
 
   dimension: dbm_revenue_usd {
     type: number
-    sql: ${TABLE}.DBM_Revenue_USD ;;
+    sql: ${TABLE}.DBM_Revenue_USD / 1000000000 ;;
   }
 
   dimension: dbm_site_id {
@@ -462,7 +462,7 @@ view: impression {
 
   dimension: dbm_total_media_cost_usd {
     type: number
-    sql: ${TABLE}.DBM_Total_Media_Cost_USD ;;
+    sql: ${TABLE}.DBM_Total_Media_Cost_USD / 1000000000 ;;
   }
 
   dimension: dbm_url {
@@ -573,4 +573,22 @@ view: impression {
     sql: ${ad_id} ;;
     drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count, distinct_users]
   }
+
+  measure: count_users {
+    type: count_distinct
+    sql: ${user_id} ;;
+  }
+
+  measure: dbm_revenue {
+    type: sum
+    value_format_name: "usd"
+    sql: ${dbm_revenue_usd} ;;
+  }
+
+  measure: dbm_total_media_cost {
+    type: sum
+    value_format_name: "usd"
+    sql: ${dbm_total_media_cost_usd} ;;
+  }
+
 }

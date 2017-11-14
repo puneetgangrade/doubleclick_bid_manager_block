@@ -575,8 +575,4 @@ view: activity {
     sql: ${total_conversions} ;;
   }
 
-  measure: revenue {
-    type: sum
-    sql: ${total_revenue} ;;
-  }
 }
