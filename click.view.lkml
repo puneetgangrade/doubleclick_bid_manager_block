@@ -1,6 +1,15 @@
 view: click {
-  sql_table_name: `ekoblov-test.dcm1684.click_1684`
-    ;;
+  sql_table_name: `ekoblov-test.dcm1684.click_1684` ;;
+
+  dimension: _data {
+    hidden: yes
+    sql: ${TABLE}._DATA_DATE ;;
+  }
+
+  dimension: _latest {
+    hidden: yes
+    sql: ${TABLE}._LATEST_DATE ;;
+  }
 
   dimension_group: click {
     type: time

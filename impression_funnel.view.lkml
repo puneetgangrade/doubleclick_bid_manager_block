@@ -8,8 +8,6 @@ view: impression_funnel {
                   , first_activity
                   , latest_activity
                   , count_conversions
-                  , count_postview_conversions
-                  , count_postclick_conversions
                   , revenue
             from
             (select user_id
@@ -55,8 +53,6 @@ view: impression_funnel {
                 , min(event_time) as first_activity
                 , max(event_time) as latest_activity
                 , count(*) as count_conversions
-                , sum(case when event_sub_type = 'POSTVIEW' THEN 1 ELSE 0 END) as count_postview_conversions
-                , sum(case when event_sub_type = 'POSTCLICK' THEN 1 ELSE 0 END) as count_postclick_conversions
                 , sum(total_revenue) as revenue
                 from `ekoblov-test.dcm1684.activity_1684`
                 where user_id <> '' and user_id is not null
@@ -192,16 +188,6 @@ view: impression_funnel {
     sql: ${TABLE}.count_conversions ;;
   }
 
-  dimension: count_postview_conversions {
-    type: number
-    sql: ${TABLE}.count_postview_conversions ;;
-  }
-
-  dimension: count_postclick_conversions {
-    type: number
-    sql: ${TABLE}.count_postclick_conversions ;;
-  }
-
   dimension: revenue {
     type: number
     hidden: yes
@@ -221,16 +207,6 @@ view: impression_funnel {
   measure: total_conversions {
     type: sum
     sql: ${count_conversions} ;;
-  }
-
-  measure: total_post_view_conversions {
-    type: sum
-    sql: ${count_postview_conversions} ;;
-  }
-
-  measure: total_post_click_conversions {
-    type: sum
-    sql: ${count_postclick_conversions} ;;
   }
 
   measure: count_users {
@@ -279,7 +255,7 @@ view: impression_funnel {
 
   measure: conversion_rate {
     type: number
-    sql: ${total_post_click_conversions}/NULLIF(${total_clicks},0) ;;
+    sql: ${total_conversions}/NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
     description: "Total Post Click Conversions/Total Clicks"
   }

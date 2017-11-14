@@ -1,6 +1,15 @@
 view: activity {
-  sql_table_name: `ekoblov-test.dcm1684.activity_1684`
-    ;;
+  sql_table_name: `ekoblov-test.dcm1684.activity_1684` ;;
+
+  dimension: _data {
+    hidden: yes
+    sql: ${TABLE}._DATA_DATE ;;
+  }
+
+  dimension: _latest {
+    hidden: yes
+    sql: ${TABLE}._LATEST_DATE ;;
+  }
 
   dimension_group: activity {
     type: time
@@ -531,6 +540,16 @@ view: activity {
     sql: ${TABLE}.TRAN_Value ;;
   }
 
+  dimension: total_conversions {
+    type: number
+    sql: ${TABLE}.Total_Conversions ;;
+  }
+
+  dimension: total_revenue {
+    type: number
+    sql: ${TABLE}.Total_Revenue ;;
+  }
+
   dimension: u_value {
     type: string
     sql: ${TABLE}.U_Value ;;
@@ -551,13 +570,13 @@ view: activity {
     sql: ${user_id} ;;
   }
 
-  measure: total_conversions {
+  measure: conversions {
     type: sum
-    sql: ${TABLE}.Total_Conversions ;;
+    sql: ${total_conversions} ;;
   }
 
-  measure: total_revenue {
+  measure: revenue {
     type: sum
-    sql: ${TABLE}.Total_Revenue ;;
+    sql: ${total_revenue} ;;
   }
 }

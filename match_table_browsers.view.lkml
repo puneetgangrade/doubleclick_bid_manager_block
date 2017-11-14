@@ -1,6 +1,15 @@
 view: match_table_browsers {
-  sql_table_name: (select * from `ekoblov-test.dcm1684.match_table_browsers_1684` where _LATEST_DATE = _DATA_DATE)
-    ;;
+  sql_table_name: `ekoblov-test.dcm1684.match_table_browsers_1684` ;;
+
+  dimension: _data {
+    hidden: yes
+    sql: ${TABLE}._DATA_DATE ;;
+  }
+
+  dimension: _latest {
+    hidden: yes
+    sql: ${TABLE}._LATEST_DATE ;;
+  }
 
   dimension: browser_platform {
     type: string
