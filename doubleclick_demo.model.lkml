@@ -11,6 +11,7 @@ persist_for: "24 hours"
 explore: master {
   from: impression
   label: "Impressions"
+  view_label: "Impressions"
 
   join: click {
     sql_on: ${master.dbm_auction_id} = ${click.dbm_auction_id} ;;

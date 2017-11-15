@@ -573,6 +573,7 @@ view: activity {
   measure: conversions {
     type: sum
     sql: ${total_conversions} ;;
+    drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count, distinct_users]
   }
 
 }
