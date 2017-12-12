@@ -271,8 +271,14 @@ view: impression {
   }
 
   dimension: dbm_device_type {
-    type: number
-    sql: ${TABLE}.DBM_Device_Type ;;
+    type: string
+    sql: CASE
+      WHEN ${TABLE}.DBM_Device_Type = 0 THEN "Computer"
+      WHEN ${TABLE}.DBM_Device_Type = 1 THEN "Other"
+      WHEN ${TABLE}.DBM_Device_Type = 2 THEN "Smart Phone"
+      WHEN ${TABLE}.DBM_Device_Type = 3 THEN "Tablet"
+      WHEN ${TABLE}.DBM_Device_Type = 4 THEN "SmartTV"
+      ELSE "Other" END ;;
   }
 
   dimension: dbm_exchange_id {
@@ -577,6 +583,7 @@ view: impression {
   measure: count_users {
     type: count_distinct
     sql: ${user_id} ;;
+    drill_fields: [user_id, count_impressions]
   }
 
   measure: dbm_revenue {
