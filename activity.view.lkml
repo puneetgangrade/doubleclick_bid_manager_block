@@ -157,76 +157,91 @@ view: activity {
   }
 
   dimension: dbm_cpm_fee_1_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_1_Advertiser_Currency ;;
   }
 
   dimension: dbm_cpm_fee_1_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_1_Partner_Currency ;;
   }
 
   dimension: dbm_cpm_fee_1_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_1_USD ;;
   }
 
   dimension: dbm_cpm_fee_2_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_2_Advertiser_Currency ;;
   }
 
   dimension: dbm_cpm_fee_2_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_2_Partner_Currency ;;
   }
 
   dimension: dbm_cpm_fee_2_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_2_USD ;;
   }
 
   dimension: dbm_cpm_fee_3_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_3_Advertiser_Currency ;;
   }
 
   dimension: dbm_cpm_fee_3_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_3_Partner_Currency ;;
   }
 
   dimension: dbm_cpm_fee_3_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_3_USD ;;
   }
 
   dimension: dbm_cpm_fee_4_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_4_Advertiser_Currency ;;
   }
 
   dimension: dbm_cpm_fee_4_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_4_Partner_Currency ;;
   }
 
   dimension: dbm_cpm_fee_4_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_4_USD ;;
   }
 
   dimension: dbm_cpm_fee_5_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_5_Advertiser_Currency ;;
   }
 
   dimension: dbm_cpm_fee_5_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_5_Partner_Currency ;;
   }
 
   dimension: dbm_cpm_fee_5_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_CPM_Fee_5_USD ;;
   }
@@ -312,76 +327,91 @@ view: activity {
   }
 
   dimension: dbm_media_fee_1_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_1_Advertiser_Currency ;;
   }
 
   dimension: dbm_media_fee_1_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_1_Partner_Currency ;;
   }
 
   dimension: dbm_media_fee_1_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_1_USD ;;
   }
 
   dimension: dbm_media_fee_2_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_2_Advertiser_Currency ;;
   }
 
   dimension: dbm_media_fee_2_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_2_Partner_Currency ;;
   }
 
   dimension: dbm_media_fee_2_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_2_USD ;;
   }
 
   dimension: dbm_media_fee_3_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_3_Advertiser_Currency ;;
   }
 
   dimension: dbm_media_fee_3_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_3_Partner_Currency ;;
   }
 
   dimension: dbm_media_fee_3_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_3_USD ;;
   }
 
   dimension: dbm_media_fee_4_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_4_Advertiser_Currency ;;
   }
 
   dimension: dbm_media_fee_4_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_4_Partner_Currency ;;
   }
 
   dimension: dbm_media_fee_4_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_4_USD ;;
   }
 
   dimension: dbm_media_fee_5_advertiser_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_5_Advertiser_Currency ;;
   }
 
   dimension: dbm_media_fee_5_partner_currency {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_5_Partner_Currency ;;
   }
 
   dimension: dbm_media_fee_5_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}.DBM_Media_Fee_5_USD ;;
   }
