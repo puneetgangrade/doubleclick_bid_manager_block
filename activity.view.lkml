@@ -23,8 +23,6 @@ view: activity {
     sql: concat(${activity_id}, ${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
   }
 
-  #     hidden: true
-
 
   measure: count_activities {
     type: count_distinct
