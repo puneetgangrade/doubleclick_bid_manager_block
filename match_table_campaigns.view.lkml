@@ -46,4 +46,11 @@ view: match_table_campaigns {
     timeframes: [date, week, month, year]
     sql: ${TABLE}.Campaign_Start_Date ;;
   }
+
+  dimension_group: campaign_launch {
+    type: time
+    timeframes: [date, week, month, year]
+    sql: TIMESTAMP(${TABLE}.Campaign_Start_Date) ;;
+  }
+
 }
