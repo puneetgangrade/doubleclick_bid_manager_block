@@ -1,6 +1,6 @@
 ### Block Info
 
-This Block is modeled on the schema brough in by [Google’s Data Transfer Service](https://cloud.google.com/bigquery/transfer/). It will cover many of the core entities involved with the DoubleClick Campaign Manager / Big Manager offering. Depending on how you use the DCM/DFP service, you may have additional entities brought in through thge Data Transfer Service, especially any custom built reports. This Block should serve as a great jump start. Happy modeling!
+This Block is modeled on the schema brough in by [Google’s Data Transfer Service](https://cloud.google.com/bigquery/transfer/). It will cover many of the core entities involved with the DoubleClick Campaign Manager / Big Manager offering. Depending on how you use the DCM/DBM service, you may have additional entities brought in through thge Data Transfer Service, especially any custom built reports. This Block should serve as a great jump start. Happy modeling!
 
 The schema documentation for Doubleclick for Publishers can be found in [Google’s DBM Documentation](https://developers.google.com/bid-manager/dtv2/reference/file-format). Please note that your naming might vary slightly.
 
