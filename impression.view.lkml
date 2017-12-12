@@ -23,8 +23,9 @@ view: impression {
 
   dimension: pk {
     type: string
-    sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
-    hidden: yes
+    primary_key: yes
+    sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}, ${dbm_line_item_pk_dim}) ;;
+#     hidden: yes
   }
 
   measure: count_impressions {
@@ -306,6 +307,13 @@ view: impression {
     sql: ${TABLE}.DBM_Line_Item_ID ;;
   }
 
+  dimension: dbm_line_item_pk_dim {
+    type: string
+    sql: CASE WHEN ${dbm_line_item_id} IS NULL THEN 'pk_id'
+        ELSE CAST(${dbm_line_item_id} as STRING)
+        END;;
+  }
+
   dimension: dbm_matching_targeted_keywords {
     type: string
     sql: ${TABLE}.DBM_Matching_Targeted_Keywords ;;
@@ -557,10 +565,10 @@ view: impression {
     sql: ${TABLE}.ZIP_Postal_Code ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [ user_id, state_region, country_code, imrematch_table_ads.ad_name, match_table_ads.ad_type, match_table_campaigns.campaign_name]
-  }
+#   measure: count {
+#     type: count
+#     drill_fields: [ user_id, state_region, country_code, imrematch_table_ads.ad_name, match_table_ads.ad_type, match_table_campaigns.campaign_name]
+#   }
 
   measure: distinct_users {
     type: count_distinct
@@ -571,13 +579,13 @@ view: impression {
   measure: campaign_count {
     type: count_distinct
     sql: ${campaign_id} ;;
-    drill_fields: [campaign_id, match_table_campaigns.campaign_name, count, distinct_users]
+    drill_fields: [campaign_id, match_table_campaigns.campaign_name, count_impressions, distinct_users]
   }
 
   measure: ad_count {
     type: count_distinct
     sql: ${ad_id} ;;
-    drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count, distinct_users]
+    drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count_impressions, distinct_users]
   }
 
   measure: count_users {

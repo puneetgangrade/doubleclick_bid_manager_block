@@ -18,10 +18,18 @@ view: click {
 
   dimension: pk {
     type: string
+    hidden: yes
+    primary_key: yes
     sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
   }
 
   #     hidden: true
+
+  # measure: count {
+  #   type: count
+    # sql: ${pk} ;;
+  # }
+
 
   measure: count_clicks {
     type: count_distinct

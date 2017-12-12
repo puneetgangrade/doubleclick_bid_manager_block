@@ -18,10 +18,13 @@ view: activity {
 
   dimension: pk {
     type: string
+    primary_key: yes
+    hidden: yes
     sql: concat(${activity_id}, ${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
   }
 
   #     hidden: true
+
 
   measure: count_activities {
     type: count_distinct
@@ -560,10 +563,10 @@ view: activity {
     sql: ${TABLE}.User_ID ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: []
+  # }
 
   measure: distinct_users {
     type: count_distinct
@@ -573,7 +576,7 @@ view: activity {
   measure: conversions {
     type: sum
     sql: ${total_conversions} ;;
-    drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count, distinct_users]
+    drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count_activities, distinct_users]
   }
 
 }
