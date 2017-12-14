@@ -43,6 +43,7 @@ explore: master {
       ${master._data} = ${match_table_ad_placement_assignments._data} ;;
     relationship: many_to_one
   }
+
   join: match_table_browsers {
     view_label: "Browsers"
     sql_on: ${master.browser_platform_id} = ${match_table_browsers.browser_platform_id} AND ${master._data} = ${match_table_browsers._data} ;;

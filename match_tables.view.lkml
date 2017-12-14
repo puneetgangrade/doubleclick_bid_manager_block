@@ -298,7 +298,8 @@ view: match_table_sites {
     sql: ${TABLE}._LATEST_DATE ;;
   }
 
-  dimension: site_dcm {
+  dimension: website_name {
+    description: "The specific webpage with the ad Displayed"
     type: string
     sql: ${TABLE}.Site_DCM ;;
   }
@@ -310,10 +311,12 @@ view: match_table_sites {
 
   dimension: site_id_site_directory {
     type: string
+    hidden: yes
     sql: ${TABLE}.Site_ID_Site_Directory ;;
   }
 
-  dimension: site_site_directory {
+  dimension: parent_website_name {
+    description: "Univeral (master) website, under which website_name wraps"
     type: string
     sql: ${TABLE}.Site_Site_Directory ;;
   }

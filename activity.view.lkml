@@ -573,12 +573,14 @@ view: activity {
 
   dimension: total_conversions {
     type: number
+    hidden: yes
     sql: ${TABLE}.Total_Conversions ;;
   }
 
   dimension: total_revenue {
     type: number
-    sql: ${TABLE}.Total_Revenue ;;
+    hidden: yes
+    sql: (${TABLE}.Total_Revenue/1000000000) ;;
   }
 
   dimension: u_value {
@@ -591,20 +593,36 @@ view: activity {
     sql: ${TABLE}.User_ID ;;
   }
 
-  # measure: count {
-  #   type: count
-  #   drill_fields: []
-  # }
-
   measure: distinct_users {
     type: count_distinct
     sql: ${user_id} ;;
   }
 
   measure: conversions {
+    description: "All conversions, including postclick and postview"
     type: sum
     sql: ${total_conversions} ;;
     drill_fields: [ad_id, match_table_ads.ad_name, match_table_ads.ad_type, count_activities, distinct_users]
+  }
+
+  measure: postclick_conversion {
+    description: "Conversions that occured after a click. This indicates an effective ad, since it lead to a click and a conversion from a user / customer"
+    type: sum
+    sql: ${total_conversions} ;;
+    filters: {
+      field: event_sub_type
+      value: "POSTCLICK"
+    }
+  }
+
+  measure: postview_conversion {
+    description: "Conversions that occured after an impression (with no click). This indicates that a user / customer came back to buy execute a conversion after seeing an ad, but not clicking on it"
+    type: sum
+    sql: ${total_conversions} ;;
+    filters: {
+      field: event_sub_type
+      value: "POSTVIEW"
+    }
   }
 
 }

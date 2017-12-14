@@ -483,6 +483,7 @@ view: impression {
   }
 
   dimension: dbm_revenue_usd {
+    description: "The amount of revenue the publisher generated from displaying your ads. This represents the total amount paid for the view event (impressions, platform fees, 3rd party data, verification, and your selected markup)."
     type: number
     sql: ${TABLE}.DBM_Revenue_USD / 1000000000 ;;
   }
@@ -508,8 +509,9 @@ view: impression {
   }
 
   dimension: dbm_total_media_cost_usd {
+    description: "The total amount paid for just the raw impressions"
     type: number
-    sql: ${TABLE}.DBM_Total_Media_Cost_USD / 1000000000 ;;
+    sql: (${TABLE}.DBM_Total_Media_Cost_USD / 1000000000) ;;
   }
 
   dimension: dbm_url {

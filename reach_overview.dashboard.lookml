@@ -506,7 +506,7 @@
     type: looker_column
     fields:
     - activity.count_activities
-    - match_table_sites.site_dcm
+    - match_table_sites.website_name
     sorts:
     - activity.count_activities desc
     limit: 10
