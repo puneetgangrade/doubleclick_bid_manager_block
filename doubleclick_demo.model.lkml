@@ -54,5 +54,8 @@ explore: master {
     sql_on: ${master.site_id_dcm} = ${match_table_sites.site_id_dcm} AND ${master._data} = ${match_table_browsers._data} ;;
     relationship: many_to_one
   }
+}
 
+explore: data_tool {
+  label: "Double Click Analytics"
 }
