@@ -34,3 +34,12 @@ Doubleclick has several notions of a conversion. A "conversion" is defined as an
 For additional examples, Merkle has written a [nice post](https://www.periscopix.co.uk/blog/post-click-vs-post-view-the-benefits-of-looking-at-all-conversions/) outlining several scenarios, and the type of conversions the scenarios would invoke.
 
 On average, about 90% of conversions are classified as "postview", due to the nature in which people browse the web and make transactions. This shouldn't discount the ads as not effective since they didn't immediately result in a click. This fact highlights the effectivess of using Display Ads to market your product and gain brand awareness, which often results in a conversion down the line when the time is right for the user.
+
+
+### Tying in Audience Information
+
+If the audience tables are available in your schema, you can join them onto the "master" impressions table using the join logic: ${master.audience_segment_id} = ${match_table_audience_segments.id} AND ${master._data} = ${audience._data} to evaluate ad performance by demographic info.
+
+### Questions about the data?
+
+For any question that arises about the contents of the data coming through, please email Google support at dcm-support@google.com with an explanation of the issue, the desired outcome, and the hurdles to achieving that outcome.

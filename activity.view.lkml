@@ -625,4 +625,10 @@ view: activity {
     }
   }
 
+  measure: average_bid_price {
+    type: average
+    sql: ${dbm_bid_price_advertiser_currency} ;;
+    value_format_name: decimal_2
+  }
+
 }

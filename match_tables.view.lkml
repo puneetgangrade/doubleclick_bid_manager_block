@@ -223,6 +223,10 @@ view: match_table_campaigns {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.Campaign ;;
+    link: {
+      label: "Campaign Lookup Dashboard"
+      url: "/dashboards/139?Campaign={{ match_table_campaigns.campaign_name._value }}"
+    }
   }
 
   dimension_group: campaign_end {
@@ -249,6 +253,11 @@ view: match_table_campaigns {
     type: time
     timeframes: [date, week, month, year]
     sql: TIMESTAMP(${TABLE}.Campaign_Start_Date) ;;
+  }
+
+  dimension: days_running {
+    type: number
+    sql: DATE_DIFF(CURRENT_DATE() , ${campaign_start_date}, DAY) ;;
   }
 
 }
