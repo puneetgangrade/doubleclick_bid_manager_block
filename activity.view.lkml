@@ -29,6 +29,12 @@ view: activity {
     sql: ${pk} ;;
   }
 
+  measure: conversion_rate {
+    type: number
+    sql: ${activity.count_activities} / ${master.count_impressions} ;;
+    value_format_name: percent_2
+  }
+
   dimension: activity_id {
     type: string
     sql: ${TABLE}.Activity_ID ;;
