@@ -223,6 +223,11 @@ view: match_table_campaigns {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.Campaign ;;
+    link: {
+      label: "{{ value }} Dashboard"
+      url: "/dashboards/130?Campaign%20Id= {{ campaign_id._value }}"
+
+    }
   }
 
   dimension_group: campaign_end {
