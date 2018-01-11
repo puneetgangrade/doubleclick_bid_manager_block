@@ -631,14 +631,46 @@ view: impression {
 
   measure: dbm_revenue {
     type: sum
-    value_format_name: "usd"
+    value_format_name: usd
     sql: ${dbm_revenue_usd} ;;
   }
 
   measure: dbm_total_media_cost {
     type: sum
-    value_format_name: "usd"
+    value_format_name: usd
     sql: ${dbm_total_media_cost_usd} ;;
   }
+
+  measure: cost_per_conversion {
+    type:  number
+    sql: ${master.dbm_revenue}/nullif(${activity.count_activities},0) ;;
+    value_format_name: usd
+  }
+
+  parameter:  metric_selector {
+    allowed_value: {
+      label: "Cost Per Conversion"
+      value: "Cost Per Conversion"
+    }
+    allowed_value: {
+      label: "Total Cost"
+      value: "Total Cost"
+    }
+    allowed_value: {
+      label: "Count of Activities"
+      value: "Count of Activities"
+    }
+  }
+
+  measure: dynamic_measure {
+    type: number
+    sql:  CASE
+            WHEN {% parameter metric_selector %} = "Cost Per Conversion" then ${cost_per_conversion}
+            WHEN {% parameter metric_selector %} = "Total Cost" then ${dbm_revenue}
+            ELSE ${activity.count_activities}
+          END;;
+  }
+
+
 
 }

@@ -224,8 +224,8 @@ view: match_table_campaigns {
     type: string
     sql: ${TABLE}.Campaign ;;
     link: {
-      label: "Campaign Lookup Dashboard"
-      url: "/dashboards/139?Campaign={{ match_table_campaigns.campaign_name._value }}"
+      label: "{{ value }} Dashboard"
+      url: "/dashboards/130?Campaign%20Id= {{ campaign_id._value }}"
     }
   }
 
