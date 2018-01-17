@@ -17,16 +17,30 @@
         GROUP BY 1 ;;
   }
 
-  dimension_group: date {
-    label: "Event"
+  dimension_group: event {
     type: time
     sql: TIMESTAMP(${TABLE}.master_event_date) ;;
     timeframes: [date, week, month]
   }
 
+  parameter: timeframe_filter {
+    allowed_value: { value: "Date" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+  }
+
+  dimension: timeframe {
+    sql: CASE
+          WHEN {% parameter timeframe_filter %} = 'Date' THEN CAST(${event_date} as STRING)
+          WHEN {% parameter timeframe_filter %} = 'Month' THEN ${event_month}
+          WHEN {% parameter timeframe_filter %} = 'Week' THEN ${event_week}
+          END ;;
+    label_from_parameter: timeframe_filter
+  }
+
   parameter: primary_metric_name {
     type: unquoted
-    default_value: "Impressions"
+    default_value: "master_count_impressions"
     allowed_value: {
       value: "master_count_impressions"
       label: "Impressions"
@@ -51,7 +65,7 @@
 
   parameter: second_metric_name {
     type: unquoted
-    default_value: "Clicks"
+    default_value: "click_count_clicks"
     allowed_value: {
       value: "master_count_impressions"
       label: "Impressions"
